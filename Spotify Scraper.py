@@ -99,9 +99,9 @@ title_to_uri = Spotify_API_data.groupby('Title')['id'].first()
 Spotify_API_data['id'] = Spotify_API_data['Title'].map(title_to_uri)
 
 #Find unique URIs in the dataset
-unique_URIs = Spotify_API_data['Title'].unique()
+unique_URIs = Spotify_API_data['id'].unique()
 
-"""
+
 # Initialize list to hold output data
 output_data = []
 
@@ -115,6 +115,4 @@ for i in range(0, len(unique_URIs), batch_size):
 # Create Output DataFrame
 Spotify_API_Features = pd.DataFrame(output_data)
 
-# Check the DataFrame
-print(Spotify_API_Features.head())
-"""
+Spotify_API_Features.to_csv("Spotify_API_Features.csv")
